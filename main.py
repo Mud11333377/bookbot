@@ -5,15 +5,18 @@ def main():
     
     try:
         text = get_book_text(filepath)
-        print(text)
-
         num_words = get_number_of_words(text)
-        
-        print(f"{num_words} words found in the document")
-
         character_count = get_character_count(text)
-
-        print(character_count)
+        report = sort_char_counts(character_count)
+        
+        print("============ BOOKBOT ============")
+        print(f"Analyzing book found at {filepath}...")
+        print("----------- Word Count ----------")
+        print(f"Found {num_words} total words")
+        print("--------- Character Count -------")
+        for item in report:
+            print(f"{item['char']}: {item['count']}")
+        print("============= END ===============")
 
 
 
@@ -22,5 +25,4 @@ def main():
     except Exception as e:
         print(e)
     
-
 main()
